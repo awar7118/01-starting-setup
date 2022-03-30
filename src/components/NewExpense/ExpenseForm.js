@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = () => {
+  // array destructuring is how line 5 works.
   const [enteredTitle, setEnteredTitle] = useState(" ");
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -14,7 +15,18 @@ const ExpenseForm = () => {
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
     // console.log(event.target.value);
-    // if 30/03/2022 selected it shows 2022-03-30 when console logged.
+    // if 30/03/2022 selected it s hows 2022-03-30 when console logged.
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
   };
 
   return (
@@ -44,7 +56,9 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Add button</button>
+        <button type="submit" onSubmit={submitHandler}>
+          Add Expense
+        </button>
       </div>
     </form>
   );
