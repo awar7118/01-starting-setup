@@ -31,9 +31,6 @@ function App() {
   return (
     <div>
       <div>
-        <ExpensesFilter></ExpensesFilter>
-      </div>
-      <div>
         <NewExpense onAddExpense={addExpenseHandler} />
       </div>
       <div>
