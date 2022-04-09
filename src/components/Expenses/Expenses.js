@@ -8,8 +8,12 @@ import ExpensesFilter from "./ExpensesFilter";
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2022");
   const filterChangeHandler = (selectedYear) => {
+    // Se,ectedYear is
     setFilteredYear(selectedYear);
   };
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
   return (
     <div>
       <Card className="expenses">
@@ -19,7 +23,7 @@ function Expenses(props) {
             onChangeFilter={filterChangeHandler}
           />
         </div>
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             // if you add key, it will help react uniquely identify each item. Always add key when mapping list of items
             key={expense.id}
