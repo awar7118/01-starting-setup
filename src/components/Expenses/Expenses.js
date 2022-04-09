@@ -14,6 +14,22 @@ function Expenses(props) {
   const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
+  let expenseDisplayContent = (
+    <p style={{ textAlign: "center", color: "white" }}>
+      Feel free to input your first expense! 🚀{" "}
+    </p>
+  );
+  if (filteredExpenses.length > 0) {
+    expenseDisplayContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        // if you add key, it will help react uniquely identify each item. Always add key when mapping list of items
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      ></ExpenseItem>
+    ));
+  }
   return (
     <div>
       <Card className="expenses">
@@ -23,15 +39,7 @@ function Expenses(props) {
             onChangeFilter={filterChangeHandler}
           />
         </div>
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            // if you add key, it will help react uniquely identify each item. Always add key when mapping list of items
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          ></ExpenseItem>
-        ))}
+        {expenseDisplayContent}
       </Card>
     </div>
   );
