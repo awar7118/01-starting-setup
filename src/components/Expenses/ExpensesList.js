@@ -15,7 +15,6 @@ const ExpensesList = (props) => {
         <ExpenseItem
           // if you add key, it will help react uniquely identify each item. Always add key when mapping list of items
           key={expense.id}
-          s
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
