@@ -1,4 +1,4 @@
-import Expenses from "./components/Expenses/Expenses";
+import Expenses from "./components/Expenses/Expenses.js";
 import ExpensesFilter from "./components/Expenses/ExpensesFilter";
 import NewExpense from "./components/NewExpense/NewExpense";
 import React, { useState } from "react";
